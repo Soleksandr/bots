@@ -28,7 +28,7 @@ telegram.scheduleMessageSend({
   schedule: '25,30,40 16 * * *',
   text: addTreatment(`${encodeURI('Я живой')} \xF0\x9F\x9A\xBC`),
   parse_mode: 'HTML',
-  chat_id: '-1001147812420',
+  chat_id: '-1001363234368',
 })
 
 telegram.sendMessage(
