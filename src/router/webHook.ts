@@ -9,10 +9,10 @@ webHookManager.init()
 webHook.post(`${process.env.WEBHOOK_ROUTE}`, async (ctx) => {
   const { chat, text } = ctx.request.body.message
 
-  ctx.body = {
-    method: "sendMessage",
-    chat_id: chat.id,
-    text: "Got it!",
-  }
+  // ctx.body = {
+  //   method: "sendMessage",
+  //   chat_id: chat.id,
+  //   text: "Got it!",
+  // }
 })
 
