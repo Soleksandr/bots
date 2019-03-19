@@ -1,13 +1,14 @@
 import * as cron from 'node-cron'
 
 import Query from '../services/Query'
-import job, { Customization } from '../services/Job'
+import job, { ScheduleDetails } from '../services/Job'
 
 interface ISchedularArguments {
   schedule: string;
-  text: string;
+  text: string | Function;
   chat_id: string;
-  scheduleDetails?: Customization
+  scheduleDetails?: ScheduleDetails;
+  parse_mode?: 'HTML' | 'Markdown';
 }
 
 class Telegram {
@@ -19,12 +20,17 @@ class Telegram {
     )
   }
 
-  public sendMessage = async (text: string, chat_id: string) => {
-    const message = await this.query.get(`/sendMessage?text=${text}&chat_id=${chat_id}`)
+  public sendMessage = async (
+    text: ISchedularArguments['text'],
+    chat_id: ISchedularArguments['chat_id'],
+    parse_mode: ISchedularArguments['parse_mode']='HTML'
+  ) => {
+    const message = typeof text === 'string' ? text : text()
+    this.query.get(`/sendMessage?text=${message}&chat_id=${chat_id}&parse_mode=${parse_mode}`)
   }
 
-  public scheduleMessageSend = ({ schedule, text, chat_id, scheduleDetails }: ISchedularArguments) => {
-    const sendMessage = this.sendMessage.bind(this, text, chat_id)
+  public scheduleMessageSend = ({ schedule, text, chat_id, scheduleDetails, parse_mode }: ISchedularArguments) => {
+    const sendMessage = this.sendMessage.bind(this, text, chat_id, parse_mode)
 
     scheduleDetails
       ? job.addCustomizedJob(schedule, sendMessage, scheduleDetails)

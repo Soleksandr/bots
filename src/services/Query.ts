@@ -11,13 +11,10 @@ export default class Query {
     return this.send(url)
   }
 
-  private send = async <T>(url: string = "", data?: Body) => {
+  private send = async (url: string = "", data?: Body) => {
     try {
-      // console.log('== url == ', url)
-      // console.log('== baseUrl == ', this.baseUrl)
       const response = await fetch(`${this.baseUrl}${url}`)
       const data = await response.json()
-      // console.log('data = ', data)
 
       return data
     } catch (error) {
