@@ -19,13 +19,13 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "node-cron": "^2.0.3",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "typescript": "^3.3.3333"
   },
   "devDependencies": {
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
     "nodemon": "^1.18.10",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.3.3333"
+    "ts-node": "^8.0.3"
   }
 }
