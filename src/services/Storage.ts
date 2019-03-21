@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-interface IWriteArgs {
+interface IWriteToStorage {
   data: { [key: string]: string };
   writeType?: 'append' | 'change';
 }
@@ -45,7 +45,7 @@ export class Storage {
     return value
   }
 
-  public writeToStorage = ({ data, writeType = 'append' }: IWriteArgs) => {
+  public writeToStorage = ({ data, writeType = 'append' }: IWriteToStorage) => {
     const fullStorage = this.getFullData()
 
     const updatedProperty = writeType === 'append'
@@ -61,7 +61,7 @@ export class Storage {
     return JSON.parse(rawData.toString())
   }
 
-  private write = (data: IWriteArgs['data']) => {
+  private write = (data: IWriteToStorage['data']) => {
     fs.writeFileSync(pathToStorage, JSON.stringify(data, null, 3))
   }
 

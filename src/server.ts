@@ -1,6 +1,12 @@
 require('dotenv').config()
+const { Storage } = require('./services/Storage')
 
-import { app } from './app';
+Storage.init()
 
-app.listen(3001)
-console.log('Server running on port 3001');
+const { app } = require('./app');
+
+const { PORT } = process.env
+
+app.listen(PORT)
+
+console.log(`Server running on port ${PORT}`);
