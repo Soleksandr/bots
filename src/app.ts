@@ -28,3 +28,8 @@ telegram.scheduleMessageSend({
   ),
   chat_id: '-1001147812420'
 });
+
+telegram.sendMessage(
+ encodeURI('Сервер запущен'),
+  '281424456'
+);
