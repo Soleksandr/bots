@@ -22,7 +22,7 @@ telegram.scheduleMessageSend({
 
 telegram.scheduleMessageSend({
   id: 'planIt',
-  schedule: '30 10,17 * * 3',
+  schedule: '30 10,17 * * 5',
   text: addTreatment(
     `${encodeURI('не забываем про <b>Planit</b>')} \xE2\x98\x9D`
   ),
